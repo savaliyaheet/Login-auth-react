@@ -27,6 +27,24 @@ function Login() {
       .catch((err) => console.log(err));
   };
 
+  const handleLoginResponse = (res) => {
+    // console.log("JWT Token", res.credential);
+    localStorage.setItem("token", res.credential);
+    navigate("home");
+  };
+  useEffect(() => {
+    /*global google*/
+    google.accounts.id.initialize({
+      client_id:
+        "658768477090-b341dm91tjhdq4fte7mjuv49kf33ihms.apps.googleusercontent.com",
+      callback: handleLoginResponse,
+    });
+
+    google.accounts.id.renderButton(document.getElementById("loginInDiv"), {
+      theme: "outline",
+      size: "large",
+    });
+  }, []);
   return (
     <div className="login">
       <h3>Login</h3>
@@ -51,6 +69,7 @@ function Login() {
         </div>
         <button type="submit">Login</button>
       </form>
+      <div id="loginInDiv"></div>
     </div>
   );
 }

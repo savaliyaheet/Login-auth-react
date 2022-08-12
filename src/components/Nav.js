@@ -5,7 +5,6 @@ import AuthContext from "../context/AuthProvider";
 function Nav() {
   const auth = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(localStorage.getItem("token"));
   return (
     <div>
       <nav className="nav">

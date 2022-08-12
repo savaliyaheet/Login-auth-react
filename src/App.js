@@ -14,13 +14,14 @@ function App() {
     <div className="App">
       <Nav />
 
-      {!auth.token ? (
+      {auth.token ? (
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="login" element={<Login />} />
+          <Route path="home" element={<Home />} />
         </Routes>
       ) : (
         <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="home" element={<Home />} />
         </Routes>
